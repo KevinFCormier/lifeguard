@@ -292,7 +292,7 @@ if [[ "$avail_clusters" -eq 0 ]]; then
     POLL_DURATION=3600
 else
     printf "${BLUE}* $avail_clusters cluster(s) available in ${CLUSTERPOOL_NAME}, polling for 20 minutes after claim creation for claim to be fulfilled and cluster to unhibernate.${CLEAR}\n"
-    POLL_DURATION=1200
+    POLL_DURATION=3600
 fi
 
 
