@@ -44,11 +44,11 @@ CLUSTERCLAIM_AUTO_IMPORT=${CLUSTERCLAIM_AUTO_IMPORT:-"false"}
 #----VALIDATE PREREQ----#
 # User needs to be logged into the cluster
 printf "${BLUE}* Testing connection${CLEAR}\n"
-if (! oc status &>/dev/null); then
+if (! oc whoami --show-server &>/dev/null); then
     errorf "${RED}ERROR: Make sure you are logged into an OpenShift Container Platform before running this script${CLEAR}\n"
     exit 2
 fi
-HOST_URL=$(oc status | grep -o "https.*api.*")
+HOST_URL=$(oc whoami --show-server 2>/dev/null)
 # Shorten to the basedomain and tell the user which cluster we're targeting
 HOST_URL=${HOST_URL/apps./}
 
