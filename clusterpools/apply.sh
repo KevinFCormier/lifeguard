@@ -295,7 +295,7 @@ fi
 #----VALIDATE PREREQ----#
 # User needs to be logged into the cluster
 printf "${BLUE}* Testing connection${CLEAR}\n"
-HOST_URL=$(oc status | grep -o "https.*api.*")
+HOST_URL=$(oc whoami --show-server 2>/dev/null)
 if [ $? -ne 0 ]; then
     errorf "${RED}ERROR: Make sure you are logged into an OpenShift Container Platform before running this script${CLEAR}\n"
     exit 2
